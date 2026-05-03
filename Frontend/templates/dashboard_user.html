@@ -15,23 +15,9 @@
     </header>
 
     <main>
-        <!-- Project Creation Form -->
+        <!-- Projects Assigned to User -->
         <section class="card">
-            <h2>Create a Project</h2>
-            <form method="POST">
-                <label>Project Name:</label>
-                <input type="text" name="name" required><br><br>
-
-                <label>Description:</label>
-                <textarea name="description" required></textarea><br><br>
-
-                <button type="submit" class="btn">Add Project</button>
-            </form>
-        </section>
-
-        <!-- Projects List -->
-        <section class="card">
-            <h2>My Projects</h2>
+            <h2>Projects Assigned to Me</h2>
             {% if projects %}
                 <ul>
                     {% for project in projects %}
@@ -39,13 +25,13 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>No projects created yet.</p>
+                <p>No projects assigned yet.</p>
             {% endif %}
         </section>
 
         <!-- Tasks Assigned by Admin -->
         <section class="card">
-            <h2>Tasks Assigned to Me</h2>
+            <h2>My Tasks</h2>
             {% if tasks %}
                 <table>
                     <tr>
@@ -53,7 +39,7 @@
                         <th>Status</th>
                         <th>Due Date</th>
                         <th>Project</th>
-                        <th>Actions</th>   <!-- ✅ new column -->
+                        <th>Actions</th>
                     </tr>
                     {% for task in tasks %}
                     <tr>
@@ -76,9 +62,6 @@
                 <p>No tasks assigned yet.</p>
             {% endif %}
         </section>
-
-
-
     </main>
 </body>
 </html>

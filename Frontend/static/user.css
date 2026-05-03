@@ -1,72 +1,30 @@
-/* user.css - dedicated styling for user dashboard */
-
-body.user-dashboard {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f7fa;
+.user-dashboard {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
     margin: 0;
     padding: 0;
-    color: #333;
 }
 
 header {
-    background: #34495e;
+    background: #2c3e50;
     color: #fff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 15px;
+    text-align: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 22px;
-}
-
-nav a {
-    color: #ecf0f1;
-    margin-left: 20px;
+header nav a {
+    color: #fff;
+    margin: 0 10px;
     text-decoration: none;
-    font-weight: 500;
-}
-nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 30px;
 }
 
 .card {
     background: #fff;
-    margin-bottom: 25px;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-}
-
-.card h2 {
-    margin-top: 0;
-    color: #2c3e50;
-}
-
-form input, form textarea, form button {
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    font-size: 14px;
-}
-
-form button {
-    background: #3498db;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-form button:hover {
-    background: #2980b9;
+    width: 80%;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 table {
@@ -76,21 +34,24 @@ table {
 }
 
 table th, table td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
 }
 
-table th {
-    background: #f0f3f6;
-    color: #2c3e50;
-}
-.status {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
+.status.pending { color: orange; }
+.status.inprogress { color: blue; }
+.status.done { color: green; }
+
+.btn {
+    background: #3498db;
     color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
-.status.pending { background: #f39c12; }
-.status.inprogress { background: #2980b9; }
-.status.done { background: #27ae60; }
+
+.btn:hover {
+    background: #2980b9;
+}
