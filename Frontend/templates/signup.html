@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup - Project Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="split-container">
+    <!-- Left side -->
+    <div class="split-left">
+        <h1>Join Team Task Manager</h1>
+        <p>Create your account and start collaborating today.</p>
+        
+    </div>
+
+    <!-- Right side -->
+    <div class="split-right">
+        <form method="POST" action="{{ url_for('signup') }}" class="form-card">
+            <h2>Create Account</h2>
+            <input type="email" name="email" placeholder="Enter Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <select name="role" required>
+                <option value="Member">Member</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <button type="submit" class="btn">Sign Up</button>
+            <p>Already have an account? <a href="{{ url_for('login_page') }}">Login</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

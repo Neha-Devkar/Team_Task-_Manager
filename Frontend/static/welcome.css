@@ -1,0 +1,81 @@
+/* General reset */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Background for welcome page */
+.welcome-page {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Centered container */
+.welcome-container {
+    text-align: center;
+}
+
+/* Card styling */
+.welcome-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    max-width: 500px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Headings and text */
+.welcome-card h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.welcome-card p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #4facfe;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #00c6ff;
+}
+
+.btn-secondary {
+    background: #43e97b;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #38f9d7;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

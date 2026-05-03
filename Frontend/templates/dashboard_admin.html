@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body class="admin-dashboard">
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Admin Dashboard</h1>
+            </header>
+
+            <!-- Employees Section -->
+            <section class="card">
+                <h2>Employees</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Assign Task</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% if user.projects %}
+                                {% for project in user.projects %}
+                                    <a href="{{ url_for('admin_create_task', project_id=project.id, user_id=user.id) }}" class="btn">
+                                        Assign to {{ project.name }}
+                                    </a><br>
+                                {% endfor %}
+                            {% else %}
+                                <span>No projects yet</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="card">
+                <h2>Projects</h2>
+                {% if projects %}
+                    <ul>
+                        {% for project in projects %}
+                            <li><strong>{{ project.name }}</strong> – {{ project.description }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No projects created yet.</p>
+                {% endif %}
+            </section>
+
+            <!-- All Tasks Section -->
+            <section class="card">
+                <h2>All Tasks</h2>
+                {% if tasks %}
+                    <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Assigned To</th>
+                            <th>Project</th>
+                        </tr>
+                        {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.title }}</td>
+                            <td><span class="status {{ task.status|lower }}">{{ task.status }}</span></td>
+                            <td>{{ task.due_date }}</td>
+                            <td>{{ task.assigned_to }}</td>
+                            <td>{{ task.project_id }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>No tasks yet.</p>
+                {% endif %}
+            </section>
+
+            <!-- User Progress Overview -->
+            <section class="card">
+                <h2>User Progress Overview</h2>
+                <table>
+                    <tr>
+                        <th>User</th>
+                        <th>Project</th>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                    </tr>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.assigned_to }}</td>
+                        <td>{{ task.project_id }}</td>
+                        <td>{{ task.title }}</td>
+                        <td><span class="status {{ task.status|lower }}">{{ task.status }}</span></td>
+                        <td>{{ task.due_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        </main>
+    </div> <!-- close admin-container -->
+</body>
+</html>

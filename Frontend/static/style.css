@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+.split-container {
+    display: flex;
+    height: 100vh;
+}
+
+.split-left, .split-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.split-left {
+    background: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.split-left img {
+    max-width: 80%;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.split-right {
+    background: #fff;
+}
+
+.form-card {
+    width: 80%;
+    max-width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.form-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-card input, .form-card select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form-card a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.form-card a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #0056b3, #0096c7);
+}

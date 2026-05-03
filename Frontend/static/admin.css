@@ -1,0 +1,91 @@
+body.admin-dashboard {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav a {
+    color: #ecf0f1;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 30px;
+}
+
+.card {
+    background: #fff;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background: #f0f3f6;
+    color: #2c3e50;
+}
+
+.btn {
+    background: #3498db;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 3px 0;
+}
+.btn:hover {
+    background: #2980b9;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+.status.pending { background: #f39c12; }
+.status.inprogress { background: #2980b9; }
+.status.done { background: #27ae60; }
+

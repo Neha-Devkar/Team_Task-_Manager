@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+</head>
+<body class="user-dashboard">
+    <header>
+        <h1>Welcome, {{ current_user.email }}</h1>
+        <nav>
+            <a href="{{ url_for('user_dashboard') }}">Dashboard</a> |
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Project Creation Form -->
+        <section class="card">
+            <h2>Create a Project</h2>
+            <form method="POST">
+                <label>Project Name:</label>
+                <input type="text" name="name" required><br><br>
+
+                <label>Description:</label>
+                <textarea name="description" required></textarea><br><br>
+
+                <button type="submit" class="btn">Add Project</button>
+            </form>
+        </section>
+
+        <!-- Projects List -->
+        <section class="card">
+            <h2>My Projects</h2>
+            {% if projects %}
+                <ul>
+                    {% for project in projects %}
+                        <li><strong>{{ project.name }}</strong> - {{ project.description }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No projects created yet.</p>
+            {% endif %}
+        </section>
+
+        <!-- Tasks Assigned by Admin -->
+        <section class="card">
+            <h2>Tasks Assigned to Me</h2>
+            {% if tasks %}
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Project</th>
+                        <th>Actions</th>   <!-- ✅ new column -->
+                    </tr>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td><span class="status {{ task.status|lower }}">{{ task.status }}</span></td>
+                        <td>{{ task.due_date }}</td>
+                        <td>{{ task.project_id }}</td>
+                        <td>
+                            <form action="{{ url_for('update_task_status', task_id=task.id, new_status='InProgress') }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn">Start</button>
+                            </form>
+                            <form action="{{ url_for('update_task_status', task_id=task.id, new_status='Done') }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn">Complete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>No tasks assigned yet.</p>
+            {% endif %}
+        </section>
+
+
+
+    </main>
+</body>
+</html>

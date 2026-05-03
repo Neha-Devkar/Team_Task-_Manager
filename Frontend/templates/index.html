@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Task Manager</title>
+    <!-- Link to your new CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
+</head>
+<body class="welcome-page">
+    <div class="welcome-container">
+        <div class="welcome-card">
+            <h1>Welcome to Team Task Manager</h1>
+            <p>Organize projects, assign tasks, and track progress with a professional dashboard.</p>
+            <div class="buttons">
+                <a href="{{ url_for('signup_page') }}" class="btn btn-primary">Sign Up</a>
+                <a href="{{ url_for('login_page') }}" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

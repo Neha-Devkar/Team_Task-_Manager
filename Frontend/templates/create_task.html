@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <h1>Create Task</h1>
+    <form method="POST">
+        <label>Task Title:</label>
+        <input type="text" name="title" required><br><br>
+
+        <label>Due Date:</label>
+        <input type="date" name="due_date" required><br><br>
+
+        <button type="submit" class="btn">Save Task</button>
+    </form>
+</body>
+</html>

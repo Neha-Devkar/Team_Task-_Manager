@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Task</h2>
+        <form method="POST">
+            <label>Title:</label>
+            <input type="text" name="title" required>
+
+            <label>Due Date:</label>
+            <input type="date" name="due_date" required>
+
+            <label>Project:</label>
+            <select name="project_id" required>
+                {% for project in projects %}
+                    <option value="{{ project.id }}">{{ project.name }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Assign To:</label>
+            <select name="user_id" required>
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.email }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Create Task</button>
+        </form>
+    </div>
+</body>
+</html>
