@@ -4,17 +4,72 @@
     <meta charset="UTF-8">
     <title>Create Task</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Create Task</h1>
-    <form method="POST">
-        <label>Task Title:</label>
-        <input type="text" name="title" required><br><br>
+    <div class="form-card">
+        <h2>Create Task</h2>
+        <!-- ✅ user_id passed via query string -->
+        <form method="POST" action="{{ url_for('assign_task', project_id=project_id) }}?user_id={{ request.args.get('user_id') }}">
+            <label>Title:</label>
+            <input type="text" name="title" required>
 
-        <label>Due Date:</label>
-        <input type="date" name="due_date" required><br><br>
+            <label>Due Date:</label>
+            <input type="date" name="due_date" required>
 
-        <button type="submit" class="btn">Save Task</button>
-    </form>
+            <button type="submit">Assign Task</button>
+        </form>
+    </div>
 </body>
 </html>

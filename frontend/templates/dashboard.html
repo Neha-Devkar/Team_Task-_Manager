@@ -59,6 +59,13 @@
 <body>
     <header>
         <h1>Welcome, {{ current_user.email }}</h1>
+        <nav>
+            <!-- ✅ Corrected links -->
+            <a href="{{ url_for('user_dashboard') }}" class="btn">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+            <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+        </nav>
     </header>
 
     <div class="container">
@@ -87,8 +94,9 @@
         {% if current_user.role == "Admin" %}
         <div class="card">
             <h2>Admin Panel</h2>
+            <!-- ✅ Corrected links -->
             <a href="{{ url_for('projects') }}" class="btn">Create Project</a>
-            <a href="{{ url_for('projects_list') }}" class="btn">View Projects</a>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn">View Projects</a>
         </div>
         {% endif %}
     </div>

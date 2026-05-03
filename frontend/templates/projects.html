@@ -6,10 +6,18 @@
 </head>
 <body>
     <h2>Create New Project</h2>
-    <form method="post">
+    <!-- ✅ Corrected form action -->
+    <form method="POST" action="{{ url_for('projects') }}">
         <input type="text" name="name" placeholder="Project Name" required>
         <textarea name="description" placeholder="Project Description"></textarea>
         <button type="submit">Create Project</button>
     </form>
+
+    <!-- ✅ Navigation for deployment -->
+    <nav style="margin-top:20px;">
+        <a href="{{ url_for('user_dashboard') }}">Dashboard</a> |
+        <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
 </body>
 </html>

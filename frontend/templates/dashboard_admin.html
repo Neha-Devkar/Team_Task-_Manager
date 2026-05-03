@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <!-- styles same as before -->
 </head>
 <body class="admin-dashboard">
     <main class="main-content">
@@ -14,7 +15,7 @@
         <!-- Project Creation Form -->
         <section class="card">
             <h2>Create a Project</h2>
-            <form method="POST" action="{{ url_for('create_project') }}">
+            <form method="POST" action="{{ url_for('projects') }}">
                 <label>Project Name:</label>
                 <input type="text" name="name" required><br><br>
 
@@ -32,24 +33,26 @@
                 <tr>
                     <th>ID</th>
                     <th>Email</th>
-                    <th>Assign Task</th>
+                    <th>Task</th>
+                    <th>Dashboard</th>
                 </tr>
                 {% for user in users %}
+                {% if user.email %}
                 <tr>
                     <td>{{ user.id }}</td>
                     <td>{{ user.email }}</td>
                     <td>
-                        {% if projects %}
-                            {% for project in projects %}
-                                <a href="{{ url_for('admin_create_task', project_id=project.id, user_id=user.id) }}" class="btn">
-                                    Assign to {{ project.name }}
-                                </a><br>
-                            {% endfor %}
-                        {% else %}
-                            <span>No projects yet</span>
-                        {% endif %}
+                        <a href="{{ url_for('assign_task', project_id=projects[0].id) }}?user_id={{ user.id }}" class="btn">
+                            Assign Task
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin_view_user_dashboard', user_id=user.id) }}" class="btn">
+                            View Dashboard
+                        </a>
                     </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
             </table>
         </section>
@@ -117,6 +120,7 @@
                 {% endfor %}
             </table>
         </section>
+
     </main>
 </body>
 </html>

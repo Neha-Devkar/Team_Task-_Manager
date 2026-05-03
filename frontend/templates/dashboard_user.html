@@ -9,8 +9,11 @@
     <header>
         <h1>Welcome, {{ current_user.email }}</h1>
         <nav>
+            <!-- ✅ Corrected links -->
             <a href="{{ url_for('user_dashboard') }}">Dashboard</a> |
-            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('logout') }}">Logout</a> |
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('signup') }}">Sign Up</a>
         </nav>
     </header>
 
@@ -42,20 +45,24 @@
                         <th>Actions</th>
                     </tr>
                     {% for task in tasks %}
+                    {% for task in tasks %}
                     <tr>
                         <td>{{ task.title }}</td>
-                        <td><span class="status {{ task.status|lower }}">{{ task.status }}</span></td>
+                        <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
-                        <td>{{ task.project_id }}</td>
                         <td>
-                            <form action="{{ url_for('update_task_status', task_id=task.id, new_status='InProgress') }}" method="POST" style="display:inline;">
+                            <form action="{{ url_for('update_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                                <input type="hidden" name="status" value="InProgress">
                                 <button type="submit" class="btn">Start</button>
                             </form>
-                            <form action="{{ url_for('update_task_status', task_id=task.id, new_status='Done') }}" method="POST" style="display:inline;">
+                            <form action="{{ url_for('update_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                                <input type="hidden" name="status" value="Done">
                                 <button type="submit" class="btn">Complete</button>
                             </form>
                         </td>
                     </tr>
+                    {% endfor %}
+
                     {% endfor %}
                 </table>
             {% else %}

@@ -11,11 +11,11 @@
     <div class="split-left">
         <h1>Join Team Task Manager</h1>
         <p>Create your account and start collaborating today.</p>
-        
     </div>
 
     <!-- Right side -->
     <div class="split-right">
+        <!-- ✅ Corrected action -->
         <form method="POST" action="{{ url_for('signup') }}" class="form-card">
             <h2>Create Account</h2>
             <input type="email" name="email" placeholder="Enter Email" required>
@@ -25,7 +25,8 @@
                 <option value="Admin">Admin</option>
             </select>
             <button type="submit" class="btn">Sign Up</button>
-            <p>Already have an account? <a href="{{ url_for('login_page') }}">Login</a></p>
+            <!-- ✅ Corrected link -->
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
         </form>
     </div>
 </div>

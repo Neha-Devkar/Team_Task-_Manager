@@ -8,7 +8,8 @@
 <body>
     <div class="form-container">
         <h2>Create Task</h2>
-        <form method="POST">
+        <!-- ✅ Corrected form action -->
+        <form method="POST" action="{{ url_for('assign_task', project_id=project_id) }}">
             <label>Title:</label>
             <input type="text" name="title" required>
 
@@ -23,7 +24,7 @@
             </select>
 
             <label>Assign To:</label>
-            <select name="user_id" required>
+            <select name="assigned_to" required>
                 {% for user in users %}
                     <option value="{{ user.id }}">{{ user.email }}</option>
                 {% endfor %}
@@ -31,6 +32,13 @@
 
             <button type="submit">Create Task</button>
         </form>
+
+        <!-- ✅ Navigation for deployment -->
+        <nav style="margin-top:20px;">
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a> |
+            <a href="{{ url_for('user_dashboard') }}">User Dashboard</a> |
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
     </div>
 </body>
 </html>

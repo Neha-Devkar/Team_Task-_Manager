@@ -40,7 +40,8 @@
         <div class="card">
             <h3>{{ project.name }}</h3>
             <p>{{ project.description }}</p>
-            <a href="{{ url_for('create_task', project_id=project.id) }}">Assign Task</a>
+            <!-- ✅ Corrected link -->
+            <a href="{{ url_for('assign_task', project_id=project.id) }}">Assign Task</a>
         </div>
     {% else %}
         <p>No projects created yet.</p>
