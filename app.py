@@ -4,8 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 
-app = Flask(
-    __name__,
+app = Flask( __name__,
     template_folder="../frontend/templates",
     static_folder="../frontend/static"
 )
