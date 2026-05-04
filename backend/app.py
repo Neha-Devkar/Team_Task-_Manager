@@ -8,11 +8,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import datetime, os
 
 # ------------------ APP CONFIG ------------------
+import os
 app = Flask(
     __name__,
-    template_folder="../frontend/templates",
-    static_folder="../frontend/static"
+    template_folder=os.path.join(os.path.dirname(__file__), '../frontend/templates'),
+    static_folder=os.path.join(os.path.dirname(__file__), '../frontend/static')
 )
+
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "defaultsecret")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///project.db")
 db = SQLAlchemy(app)
@@ -177,4 +179,4 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
