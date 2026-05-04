@@ -19,8 +19,8 @@ app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "defaultsecret")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite:///project.db")
 db = SQLAlchemy(app)
 
-@app.before_first_request
-def create_tables():
+# Create tables when app starts
+with app.app_context():
     db.create_all()
 
 
@@ -52,7 +52,6 @@ class Task(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 # ------------------ HELPERS ------------------
 def is_admin():
     return current_user.is_authenticated and current_user.role == "Admin"
